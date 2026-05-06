@@ -1,0 +1,32 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh issue create *)",
+      "Bash(npx vitest run *)",
+      "Bash(gh repo view *)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npx tsgo:*)",
+      "Bash(npm test:*)",
+      "Bash(npm check:*)",
+      "Bash(gh label:*)",
+      "Bash(npx -p typescript tsc --noEmit)",
+      "WebFetch(domain:www.aihero.dev)",
+      "WebFetch(domain:worktrunk.dev)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Bash(gh issue list *)",
+      "Bash(gh issue view *)",
+      "Bash(gh issue edit * --add-label *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr diff *)",
+      "WebFetch(domain:www.superagent.sh)",
+      "WebFetch(domain:www.koyeb.com)",
+      "WebFetch(domain:www.daytona.io)",
+      "WebFetch(domain:www.npmjs.com)",
+      "Bash(git diff:*)",
+      "WebFetch(domain:vercel.com)"
+    ]
+  }
+}

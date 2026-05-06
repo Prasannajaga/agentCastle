@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh issue create *)",
+      "Bash(npx vitest run *)",
+      "Bash(gh repo view *)",
+      "Bash(gh issue view *)",
+      "Bash(git add:*)",
+      "Bash(git status:*)",
+      "Bash(git commit:*)",
+      "Bash(npx tsgo:*)",
+      "Bash(npm test:*)",
+      "Bash(npm check:*)",
+      "Bash(npm run typecheck *)",
+      "Bash(git merge sandcastle/*)"
+    ]
+  }
+}
