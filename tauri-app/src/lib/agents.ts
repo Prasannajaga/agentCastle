@@ -12,42 +12,15 @@ export type AgentStatus =
 export type RunStatus = "running" | "completed" | "failed" | "cancelled";
 export type SandboxProviderName = "docker" | "podman";
 
-export type CreatePromptPayload =
-  | { type: "inline"; value: string }
-  | { type: "file"; path: string };
-
 export type CreateAgentPayload = {
   name: string;
   target_repo_path: string;
   sandbox_provider: SandboxProviderName;
   model: string;
   agent_provider?: string;
-  prompt: CreatePromptPayload;
+  prompt: { type: "inline"; value: string } | { type: "file"; path: string };
   max_iterations: number;
   branch?: string | null;
-};
-
-export type AgentPrompt = {
-  type: "file";
-  path: string;
-  source_path?: string | null;
-};
-
-export type AgentConfig = {
-  id: string;
-  name: string;
-  directory: string;
-  target_repo_path: string;
-  sandbox_provider: SandboxProviderName;
-  model: string;
-  agent_provider: string;
-  prompt: AgentPrompt;
-  max_iterations: number;
-  branch: string;
-  status: AgentStatus;
-  latest_run_id?: string | null;
-  created_at: string;
-  updated_at: string;
 };
 
 export type AgentSummary = {
@@ -55,9 +28,19 @@ export type AgentSummary = {
   name: string;
   directory: string;
   status: AgentStatus;
-  latest_run_id?: string | null;
+  latest_run_id: string | null;
   created_at: string;
   updated_at: string;
+};
+
+export type AgentConfig = AgentSummary & {
+  target_repo_path: string;
+  sandbox_provider: SandboxProviderName;
+  model: string;
+  agent_provider: string;
+  prompt: { type: "file"; path: string; source_path?: string | null };
+  max_iterations: number;
+  branch: string;
 };
 
 export type RunRecord = {
@@ -65,10 +48,10 @@ export type RunRecord = {
   agent_id: string;
   status: RunStatus;
   started_at: string;
-  ended_at?: string | null;
+  ended_at: string | null;
   target_repo_path: string;
   branch: string;
-  worktree_path?: string | null;
+  worktree_path: string | null;
   model: string;
   agent_provider: string;
   sandbox_provider: SandboxProviderName;
@@ -81,13 +64,13 @@ export type RunRecord = {
   changed_files: string;
   commits_file: string;
   docker_metrics_file: string;
-  error?: string | null;
-  warning?: string | null;
+  error: string | null;
+  warning: string | null;
 };
 
 export type AgentDetails = {
   agent: AgentConfig;
-  latest_run?: RunRecord | null;
+  latest_run: RunRecord | null;
 };
 
 export type ChangedFile = {
@@ -97,10 +80,6 @@ export type ChangedFile = {
   deletions: number;
 };
 
-export type ChangedFiles = {
-  files: ChangedFile[];
-};
-
 export type CommitInfo = {
   sha: string;
   summary?: string | null;
@@ -108,7 +87,7 @@ export type CommitInfo = {
 
 export type RunDetails = {
   run: RunRecord;
-  changed_files: ChangedFiles;
+  changed_files: { files: ChangedFile[] };
   commits: CommitInfo[];
   stdout_log_available: boolean;
   stderr_log_available: boolean;
@@ -146,14 +125,6 @@ export type DockerMetricsPayload = {
   unavailable_reason?: string | null;
 };
 
-export type ProcessMetricsPayload = {
-  agent_id: string;
-  run_id: string;
-  timestamp: string;
-  process_running: boolean;
-  pid?: number | null;
-};
-
 export type LogEventPayload = {
   agent_id: string;
   run_id: string;
@@ -167,21 +138,6 @@ export type StatusChangedPayload = {
   run_id?: string | null;
   status: AgentStatus;
   timestamp: string;
-};
-
-export type RunEventPayload = {
-  agent_id: string;
-  run_id: string;
-  status?: RunStatus;
-  error?: string | null;
-  warning?: string | null;
-  started_at?: string;
-  ended_at?: string;
-};
-
-export type CreatedEventPayload = {
-  agent_id: string;
-  agent: AgentDetails;
 };
 
 export type JobStarted = {
@@ -213,8 +169,6 @@ export const agentApi = {
     invoke<void>("open_run_directory", { agentId, runId }),
 };
 
-export function getErrorMessage(error: unknown): string {
-  if (typeof error === "string") return error;
-  if (error instanceof Error) return error.message;
-  return "Something went wrong";
+export function getErrorMessage(error: unknown) {
+  return error instanceof Error ? error.message : String(error);
 }

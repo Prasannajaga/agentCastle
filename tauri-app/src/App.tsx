@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ThemeProvider } from "@/views/providers/ThemeProvider";
 import { MainLayout } from "@/views/Layout/MainLayout";
 import { AgentsView } from "@/views/Agents/AgentsView";
-import { AgentDetailView } from "@/views/Agents/AgentDetailView";
 import { MetricsView } from "@/views/Metrics/MetricsView";
 import { SettingsView } from "@/views/Settings/SettingsView";
 import "./App.css";
@@ -14,7 +13,6 @@ function App() {
         <Routes>
           <Route element={<MainLayout />}>
             <Route path="/" element={<AgentsView />} />
-            <Route path="/agents/:id" element={<AgentDetailView />} />
             <Route path="/metrics" element={<MetricsView />} />
             <Route path="/settings" element={<SettingsView />} />
             <Route path="*" element={<Navigate to="/" replace />} />
