@@ -1,0 +1,11 @@
+file:///home/prasanna/coding/agentCastle/tauri-app/src/views/Metrics/MetricsView.tsx
+file:///home/prasanna/coding/agentCastle/tauri-app/package.json
+file:///home/prasanna/coding/agentCastle/tauri-app/src/index.css
+file:///home/prasanna/coding/agentCastle/sandcastle/src/templates/blank/main.mts
+file:///home/prasanna/coding/agentCastle/sandcastle/src/templates/blank/template.json
+file:///home/prasanna/coding/agentCastle/sandcastle/src/templates/parallel-planner/main.mts
+file:///home/prasanna/coding/agentCastle/sandcastle/src/SandboxFactory.ts
+file:///home/prasanna/coding/agentCastle/sandcastle/.sandcastle/Dockerfile
+file:///home/prasanna/coding/agentCastle/sandcastle/src/Orchestrator.ts
+file:///home/prasanna/coding/agentCastle/sandcastle/src/run.ts
+file:///home/prasanna/coding/agentCastle/tauri-app/src-tauri/src/lib.rs
