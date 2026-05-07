@@ -17,7 +17,7 @@ button,
   user-select: none;
 }
 
-/* Custom scrollbar for dark theme consistency */
+/* Custom scrollbar — theme-aware */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -28,12 +28,12 @@ button,
 }
 
 ::-webkit-scrollbar-thumb {
-  background: oklch(0.3 0 0);
+  background: var(--border);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.4 0 0);
+  background: var(--muted-foreground);
 }
 
 /* Status dot pulse animation */
@@ -53,7 +53,11 @@ button,
 
 .card-hover:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 24px oklch(0 0 0 / 0.25);
+  box-shadow: 0 4px 24px oklch(0 0 0 / 0.12);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 4px 24px oklch(0 0 0 / 0.35);
 }
 
 /* Subtle entrance animation */
@@ -86,3 +90,38 @@ button,
 .stagger-children > *:nth-child(7) { animation-delay: 300ms; }
 .stagger-children > *:nth-child(8) { animation-delay: 350ms; }
 .stagger-children > *:nth-child(9) { animation-delay: 400ms; }
+
+/* Live log streaming indicator */
+@keyframes log-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+.animate-log-blink {
+  animation: log-blink 1s ease-in-out infinite;
+}
+
+/* Diff highlighting — GitHub Desktop style */
+.diff-added {
+  background: oklch(0.90 0.08 145 / 0.25);
+}
+
+.dark .diff-added {
+  background: oklch(0.35 0.08 145 / 0.35);
+}
+
+.diff-removed {
+  background: oklch(0.90 0.08 25 / 0.25);
+}
+
+.dark .diff-removed {
+  background: oklch(0.35 0.08 25 / 0.35);
+}
+
+.diff-hunk {
+  background: oklch(0.75 0.05 260 / 0.15);
+}
+
+.dark .diff-hunk {
+  background: oklch(0.30 0.05 260 / 0.30);
+}

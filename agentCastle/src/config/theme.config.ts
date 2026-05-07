@@ -3,6 +3,8 @@ export type Theme = "dark" | "light" | "system";
 export interface ThemeConfig {
   defaultTheme: Theme;
   storageKey: string;
+  logStreamMaxLines: number;
+  logStreamRefreshMs: number;
 }
 
 /**
@@ -12,4 +14,6 @@ export interface ThemeConfig {
 export const THEME_CONFIG: Readonly<ThemeConfig> = Object.freeze({
   defaultTheme: "system",
   storageKey: "vite-ui-theme",
+  logStreamMaxLines: 2000,
+  logStreamRefreshMs: 500,
 });

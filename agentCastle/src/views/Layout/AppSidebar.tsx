@@ -39,7 +39,7 @@ export function AppSidebar() {
         <SidebarGroup>
           {/* Brand */}
           <div className="flex h-12 items-center px-4 gap-2.5 mb-6">
-            <div className="bg-foreground text-background p-1.5 rounded-lg">
+            <div className="bg-primary text-primary-foreground p-1.5 rounded-lg">
               <Castle className="h-4 w-4" />
             </div>
             <div className="flex flex-col">

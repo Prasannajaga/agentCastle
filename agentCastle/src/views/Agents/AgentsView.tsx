@@ -112,7 +112,7 @@ export function AgentsView() {
             Refresh
           </Button>
           <CreateAgentDialog onCreated={handleCreated}>
-            <Button size="sm" className="bg-foreground text-background hover:bg-foreground/90">
+            <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
               <Plus className="h-3.5 w-3.5 mr-1.5" />
               New Agent
             </Button>
@@ -173,7 +173,7 @@ export function AgentsView() {
             Create your first agent to start running automated tasks in sandboxed environments.
           </p>
           <CreateAgentDialog onCreated={handleCreated}>
-            <Button size="sm" className="mt-4 bg-foreground text-background hover:bg-foreground/90">
+            <Button size="sm" className="mt-4 bg-primary text-primary-foreground hover:bg-primary/90">
               <Plus className="h-3.5 w-3.5 mr-1.5" />
               Create Agent
             </Button>

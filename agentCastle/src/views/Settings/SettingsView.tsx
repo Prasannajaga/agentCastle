@@ -51,7 +51,7 @@ export function SettingsView() {
                   onClick={() => setTheme(opt.value)}
                   className={`text-xs gap-1.5 h-7 px-3 ${
                     theme === opt.value
-                      ? "bg-foreground text-background"
+                      ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
